@@ -50,9 +50,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Auth NPM InnovOrder
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
