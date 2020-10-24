@@ -11,7 +11,8 @@
     "prepare": "yarn build",
     "test": "jest",
     "test:integration": "jest --config jest.integration.config.js --runInBand",
-    "prettier": "prettier . --write"
+    "prettier": "prettier . -c",
+    "prettier:fix": "prettier . --write"
   },
   "bin": {
     "eslint-disabled-stats": "dist/cli.js"
