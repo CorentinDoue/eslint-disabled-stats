@@ -1,0 +1,3 @@
+type Options = {
+  pattern: string;
+};
