@@ -1,6 +1,7 @@
 import { computeEslintDisabledStats } from './index';
 import { getFileContent } from './getFiles';
 import * as getFiles from './getFiles';
+import { Options } from './types';
 
 const testPattern = 'example/**/*.(js|ts|jsx|tsx)';
 const testOptions: Options = { pattern: testPattern };
