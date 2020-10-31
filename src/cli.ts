@@ -2,7 +2,7 @@
 import meow from 'meow';
 import chalk from 'chalk';
 import { computeEslintDisabledStats } from './index';
-import { printError } from './print';
+import { printError } from './display/print';
 import { Options } from './types';
 
 const defaultPattern = '**/*.(js|ts|jsx|tsx)';

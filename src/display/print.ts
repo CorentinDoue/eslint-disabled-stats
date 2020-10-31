@@ -1,6 +1,6 @@
 import { red, yellow, blue, green, dim } from 'chalk';
 import { textSync } from 'figlet';
-import { Unicode } from './unicode';
+import { Unicode } from '../unicode';
 
 export const printTitle = (title: string): void =>
   console.log(blue(textSync(title)));
