@@ -9,11 +9,13 @@ const printList = <T>(dictionary: { [key: string]: T[] }): void =>
     ),
   );
 
-export const printStats = (stats: Statistics): void => {
+export const printStats = (stats: Statistics, quiet: boolean): void => {
   const { totalRulesDisabled, byRules, byFiles } = stats;
-  console.log(`\nRules disabled by rule:`);
-  printList(byRules);
-  console.log(`\nRules disabled by files:`);
-  printList(byFiles);
+  if (!quiet) {
+    console.log(`\nRules disabled by rule:`);
+    printList(byRules);
+    console.log(`\nRules disabled by files:`);
+    printList(byFiles);
+  }
   console.log(`\nTotal rules disabled: ${yellow.bold(totalRulesDisabled)}\n`);
 };

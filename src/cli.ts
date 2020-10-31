@@ -15,6 +15,9 @@ const cli = meow(
     --pattern,    -p ${chalk.gray(
       `Glob pattern of matching files ( default: "${defaultPattern}" )`,
     )}
+    --quiet,      -q ${chalk.gray(
+      `Only display total stat ( default: "false" )`,
+    )}
 `,
   {
     flags: {
@@ -22,12 +25,17 @@ const cli = meow(
         type: 'string',
         alias: 'p',
       },
+      quiet: {
+        type: 'boolean',
+        alias: 'q',
+      },
     },
   },
 );
 
 const options: Options = {
   pattern: cli.flags.pattern ?? defaultPattern,
+  quiet: Boolean(cli.flags.quiet),
 };
 
 computeEslintDisabledStats(options).catch((error) => printError(error));

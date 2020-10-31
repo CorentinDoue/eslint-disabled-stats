@@ -9,7 +9,7 @@ import { printStats } from './statistics/printStats';
 import { AnalyseSpinner } from './display/analyseSpinner';
 
 export const computeEslintDisabledStats = async (options: Options) => {
-  const { pattern } = options;
+  const { pattern, quiet } = options;
   printTitle('Eslint Disabled Stats');
   const filePaths = await getFilesPaths(pattern);
   const spinner = new AnalyseSpinner(filePaths.length);
@@ -28,6 +28,6 @@ export const computeEslintDisabledStats = async (options: Options) => {
   spinner.stop();
   const statistics = computeStatistics(eslintDisabledRules);
   printSuccess('Statistics computed');
-  printStats(statistics);
+  printStats(statistics, quiet);
   printSuccess('Done');
 };

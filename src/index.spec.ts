@@ -4,7 +4,7 @@ import * as getFiles from './getFiles';
 import { Options } from './types';
 
 const testPattern = 'example/**/*.(js|ts|jsx|tsx)';
-const testOptions: Options = { pattern: testPattern };
+const testOptions: Options = { pattern: testPattern, quiet: false };
 
 describe('computeEslintDisabledStats', () => {
   it('finds the two example files', async () => {
