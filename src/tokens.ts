@@ -1,7 +1,6 @@
 import { tokenize, TokenizeOptions } from 'esprima';
+import { valueContainsEslintDisable } from './eslintDisabledRules/eslintParser';
 import { Token, TokenType } from './types';
-
-const eslintDisablePattern = 'eslint-disable';
 
 const tokenizeOptions: TokenizeOptions = {
   comment: true,
@@ -16,7 +15,7 @@ const isComment = ({ type }: Token): boolean =>
   type === TokenType.LineComment || type === TokenType.BlockComment;
 
 const containsEslintDisable = ({ value }: Token): boolean =>
-  value.includes(eslintDisablePattern);
+  valueContainsEslintDisable(value);
 
 export const getEslintDisabledTokens = (tokens: Token[]): Token[] =>
   tokens.filter((token) => isComment(token) && containsEslintDisable(token));
