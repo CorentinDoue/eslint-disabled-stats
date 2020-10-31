@@ -1,3 +1,0 @@
-type Options = {
-  pattern: string;
-};
