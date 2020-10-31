@@ -3,8 +3,8 @@
   "version": "1.1.0",
   "main": "dist/index.js",
   "license": "MIT",
-  "homepage": "https://github.com/stevenpetryk/eslint-ignore-inserter",
-  "author": "Steven Petryk",
+  "homepage": "https://github.com/CorentinDoue/eslint-disabled-stats",
+  "author": "Corentin Doué",
   "scripts": {
     "start": "tsc --watch",
     "build": "rimraf dist && tsc",
