@@ -8,7 +8,10 @@ import * as printStatsLib from './statistics/printStats';
 import { Statistics } from './statistics/types';
 
 const testPattern = 'example/**/*.(js|ts|jsx|tsx)';
-const testOptions: Options = { pattern: testPattern, quiet: false };
+const testOptions: Options = {
+  pattern: testPattern,
+  quiet: false,
+};
 
 describe('computeEslintDisabledStats', () => {
   it('finds the two example files', async () => {
@@ -25,9 +28,13 @@ describe('computeEslintDisabledStats', () => {
   describe('Stats', () => {
     jest.spyOn(printStatsLib, 'printStats');
     let statistics: Statistics;
+    let totalFiles: number;
+    let totalLines: number;
     beforeAll(async () => {
       await computeEslintDisabledStats(testOptions);
-      statistics = mocked(printStats).mock.calls[0][0];
+      ({ statistics, totalFiles, totalLines } = mocked(
+        printStats,
+      ).mock.calls[0][0]);
     });
 
     it('counts 4 disabled rules', () => {
@@ -58,6 +65,14 @@ describe('computeEslintDisabledStats', () => {
           { rule: 'ALL_RULES', file: 'example/legacy/legacy-file.js', line: 1 },
         ],
       });
+    });
+
+    it('computes the number of files', () => {
+      expect(totalFiles).toBe(2);
+    });
+
+    it('computes the number of lines', () => {
+      expect(totalLines).toBe(19);
     });
   });
 });
