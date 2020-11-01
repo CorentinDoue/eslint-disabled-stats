@@ -1,6 +1,6 @@
+import { groupBy } from 'lodash';
 import { Statistics, StatsByFiles, StatsByRules } from './types';
 import { EslintDisabledRule } from '../eslintDisabledRules/types';
-import { groupBy } from 'lodash';
 
 const groupByRules = (disabledRules: EslintDisabledRule[]): StatsByRules =>
   groupBy(disabledRules, 'rule');

@@ -1,4 +1,4 @@
-import { red, yellow, blue, green, dim } from 'chalk';
+import { blue, dim, green, red, yellow } from 'chalk';
 import { textSync } from 'figlet';
 import { Unicode } from '../unicode';
 

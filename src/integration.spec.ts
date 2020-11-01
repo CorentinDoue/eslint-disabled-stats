@@ -1,10 +1,10 @@
+import { mocked } from 'ts-jest';
 import { computeEslintDisabledStats } from './index';
 import { getFileContent } from './getFiles';
 import * as getFiles from './getFiles';
 import { Options } from './types';
 import { printStats } from './statistics/printStats';
 import * as printStatsLib from './statistics/printStats';
-import { mocked } from 'ts-jest';
 import { Statistics } from './statistics/types';
 
 const testPattern = 'example/**/*.(js|ts|jsx|tsx)';
