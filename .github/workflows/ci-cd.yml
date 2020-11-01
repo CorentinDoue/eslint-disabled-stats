@@ -32,6 +32,8 @@ jobs:
 
       - run: yarn prettier
 
+      - run: yarn lint
+
       - run: yarn test
 
   create-release:
