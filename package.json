@@ -12,7 +12,9 @@
     "test": "jest",
     "test:integration": "jest --config jest.integration.config.js --runInBand",
     "prettier": "prettier . -c",
-    "prettier:fix": "prettier . --write"
+    "prettier:fix": "prettier . --write",
+    "lint": "eslint --quiet 'src/**/*.ts'",
+    "lint:fix": "eslint --quiet --fix 'src/**/*.ts'"
   },
   "bin": {
     "eslint-disabled-stats": "dist/cli.js"
@@ -36,6 +38,12 @@
     "@types/lodash": "^4.14.164",
     "@types/meow": "^5.0.0",
     "@types/node": "^14.11.1",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.4.2",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",

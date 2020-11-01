@@ -1,6 +1,6 @@
+import { flatten } from 'lodash';
 import { EslintDisabledRule } from './types';
 import { Token } from '../types';
-import { flatten } from 'lodash';
 
 const eslintDisablePattern = 'eslint-disable';
 export const ALL_RULES = 'ALL_RULES';

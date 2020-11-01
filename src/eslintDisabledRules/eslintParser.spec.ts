@@ -9,7 +9,7 @@ const tokenFactory = (value: string): Token => ({
 });
 const filePath = 'filePath';
 describe('EslintParser', () => {
-  it('returns the eslint rule formatted', async () => {
+  it('returns the eslint rule formatted', () => {
     const [eslintRule] = parseEslintRules(
       [tokenFactory('eslint-disable-next-line no-shadow')],
       filePath,
@@ -22,7 +22,7 @@ describe('EslintParser', () => {
     });
   });
 
-  it('returns the correct rule even with extra spaces', async () => {
+  it('returns the correct rule even with extra spaces', () => {
     const [eslintRule] = parseEslintRules(
       [tokenFactory('  eslint-disable-next-line   no-shadow  ')],
       filePath,
@@ -31,7 +31,7 @@ describe('EslintParser', () => {
     expect(eslintRule.rule).toEqual('no-shadow');
   });
 
-  it('returns the rules', async () => {
+  it('returns the rules', () => {
     const eslintRules = parseEslintRules(
       [tokenFactory('eslint-disable-next-line no-shadow,prefer-const')],
       filePath,
@@ -41,7 +41,7 @@ describe('EslintParser', () => {
     expect(eslintRules[1].rule).toEqual('prefer-const');
   });
 
-  it('returns the correct rules even with extra spaces', async () => {
+  it('returns the correct rules even with extra spaces', () => {
     const eslintRules = parseEslintRules(
       [
         tokenFactory(
@@ -55,7 +55,7 @@ describe('EslintParser', () => {
     expect(eslintRules[1].rule).toEqual('prefer-const');
   });
 
-  it('returns ALL_RULES as rule if no rule is specified', async () => {
+  it('returns ALL_RULES as rule if no rule is specified', () => {
     const [eslintRule] = parseEslintRules(
       [tokenFactory('eslint-disable')],
       filePath,
@@ -64,7 +64,7 @@ describe('EslintParser', () => {
     expect(eslintRule.rule).toEqual(ALL_RULES);
   });
 
-  it('returns ALL_RULES as rule if no rule is specified even with extra spaces', async () => {
+  it('returns ALL_RULES as rule if no rule is specified even with extra spaces', () => {
     const [eslintRule] = parseEslintRules(
       [tokenFactory('  eslint-disable  ')],
       filePath,
@@ -73,7 +73,7 @@ describe('EslintParser', () => {
     expect(eslintRule.rule).toEqual(ALL_RULES);
   });
 
-  it('returns flatten rules of tokens', async () => {
+  it('returns flatten rules of tokens', () => {
     const eslintRules = parseEslintRules(
       [
         tokenFactory('eslint-disable'),

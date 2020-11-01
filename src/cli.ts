@@ -12,11 +12,11 @@ const cli = meow(
     $ eslint-disabled-stats
 
   Options
-    --pattern,    -p ${chalk.gray(
+    --pattern,      -p ${chalk.gray(
       `Glob pattern of matching files ( default: "${defaultPattern}" )`,
     )}
-    --quiet,      -q ${chalk.gray(
-      `Only display total stat ( default: "false" )`,
+    --quiet,        -q ${chalk.gray(
+      `Do not display stats by rule and by file ( default: "false" )`,
     )}
 `,
   {

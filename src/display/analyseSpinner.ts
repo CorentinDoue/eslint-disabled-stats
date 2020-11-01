@@ -1,5 +1,5 @@
-import { printInfo } from './print';
 import ora, { Ora } from 'ora';
+import { printInfo } from './print';
 
 export class AnalyseSpinner {
   private spinner: Ora;

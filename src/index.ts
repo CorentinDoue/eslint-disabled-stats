@@ -1,33 +1,31 @@
-import { flatten } from 'lodash';
+import { flatten, sumBy } from 'lodash';
 import { printSuccess, printTitle } from './display/print';
-import { getFileContent, getFilesPaths } from './getFiles';
-import { getEslintDisabledTokens, getTokens } from './tokens';
+import { getFilesPaths } from './getFiles';
 import { Options } from './types';
-import { parseEslintRules } from './eslintDisabledRules/eslintParser';
 import { computeStatistics } from './statistics/computeStats';
 import { printStats } from './statistics/printStats';
 import { AnalyseSpinner } from './display/analyseSpinner';
+import { getDataFromFiles } from './getDataFromFiles';
 
-export const computeEslintDisabledStats = async (options: Options) => {
-  const { pattern, quiet } = options;
+export const computeEslintDisabledStats = async (
+  options: Options,
+): Promise<void> => {
+  const { pattern } = options;
   printTitle('Eslint Disabled Stats');
   const filePaths = await getFilesPaths(pattern);
-  const spinner = new AnalyseSpinner(filePaths.length);
+  const totalFiles = filePaths.length;
+  const spinner = new AnalyseSpinner(totalFiles);
+  const parsedData = await getDataFromFiles({
+    filePaths,
+    spinner,
+  });
   const eslintDisabledRules = flatten(
-    await Promise.all(
-      filePaths.map(async (filePath) => {
-        const fileContent = await getFileContent(filePath);
-        const tokens = getTokens(fileContent);
-        const eslintDisabledTokens = getEslintDisabledTokens(tokens);
-        const eslintRules = parseEslintRules(eslintDisabledTokens, filePath);
-        spinner.tick();
-        return eslintRules;
-      }),
-    ),
+    parsedData.map((data) => data.eslintDisabledRules),
   );
+  const totalLines = sumBy(parsedData, 'totalLines');
   spinner.stop();
   const statistics = computeStatistics(eslintDisabledRules);
   printSuccess('Statistics computed');
-  printStats(statistics, quiet);
+  printStats({ statistics, totalLines, totalFiles, options });
   printSuccess('Done');
 };
