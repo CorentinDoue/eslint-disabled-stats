@@ -14,7 +14,7 @@ export const printStats = (stats: Statistics, quiet: boolean): void => {
   if (!quiet) {
     console.log(`\nRules disabled by rule:`);
     printList(byRules);
-    console.log(`\nRules disabled by files:`);
+    console.log(`\nRules disabled by file:`);
     printList(byFiles);
   }
   console.log(`\nTotal rules disabled: ${yellow.bold(totalRulesDisabled)}\n`);
