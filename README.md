@@ -2,20 +2,18 @@
 
 Compute statistics about the eslint rules disabled
 
-It could be useful to track the correction of legacy eslint errors on your codebase
+[![npm version](https://badge.fury.io/js/eslint-disabled-stats.svg)](https://badge.fury.io/js/eslint-disabled-stats)
+[![CI-CD](https://github.com/CorentinDoue/eslint-disabled-stats/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/CorentinDoue/eslint-disabled-stats/actions/workflows/ci-cd.yml)
 
-The number of analysed files and number of analysed lines could be useful to track the evolution of the eslint errors
+It could be useful to track the correction of legacy eslint errors commented with a tool such as https://github.com/CorentinDoue/eslint-disable-inserter on your codebase.
+
+The number of analyzed files and number of analyzed lines could be useful to track the evolution of the eslint errors
 compared to the evolution of the codebase.
 
 ## Usage
 
 ```
 $ npx eslint-disabled-stats -g -p "example/**/*.(js|ts)"
-  _____     _ _       _     ____  _           _     _          _   ____  _        _
- | ____|___| (_)_ __ | |_  |  _ \(_)___  __ _| |__ | | ___  __| | / ___|| |_ __ _| |_ ___
- |  _| / __| | | '_ \| __| | | | | / __|/ _` | '_ \| |/ _ \/ _` | \___ \| __/ _` | __/ __|
- | |___\__ \ | | | | | |_  | |_| | \__ \ (_| | |_) | |  __/ (_| |  ___) | || (_| | |_\__ \
- |_____|___/_|_|_| |_|\__| |____/|_|___/\__,_|_.__/|_|\___|\__,_| |____/ \__\__,_|\__|___/
 
 ℹ Analysing 2 files...
 ✔ Statistics computed
@@ -40,7 +38,7 @@ Analysed lines:        19
 
 ### Options
 
-- The `--pattern` / `-p` flag allows to specify
+- The `--pattern` / `-p` flag allows specifying
   the glob pattern of files on which the statistics are computed.
   The default pattern is `**/*.(js|ts|jsx|tsx)`
 
